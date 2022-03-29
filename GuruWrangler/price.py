@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import date
 
 
-def io(ticker: str, token:str):
+def io(ticker: str, token: str):
     return requests.get('https://api.gurufocus.com/public/user/' + token + '/stock/' + ticker + '/price').json()
 
 
