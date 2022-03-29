@@ -1,15 +1,14 @@
-import pandas as pd
-import dividend
-import price
+import GuruWrangler.dividend
+import GuruWrangler.price
 from datetime import date
 
 
 def to_df(ticker: str, token: str):
-    div_df = dividend.to_df(ticker, token)
+    div_df = GuruWrangler.dividend.to_df(ticker, token)
     div_df2 = div_df.loc[div_df["type"] != 'Special Div.']
     div_ex_df = div_df2.drop(['record_date', 'pay_date', 'type', 'currency'], axis=1)
 
-    price_df = price.to_df(ticker, token)
+    price_df = GuruWrangler.price.to_df(ticker, token)
     div_frequency = 4
 
     combined_df = price_df.join(div_ex_df)
