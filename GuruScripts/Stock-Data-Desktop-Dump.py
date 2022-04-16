@@ -1,6 +1,6 @@
 import keys.guruapi
 import GuruWrangler.jupyterdata
-import GuruWrangler.dyt
+import GuruWrangler.dmd
 import os
 
 token = keys.guruapi.token
