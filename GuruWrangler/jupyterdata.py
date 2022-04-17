@@ -32,6 +32,7 @@ def to_df(ticker: str, token: str):
     data_df['LongAssets'] = df['balance_sheet.Total Long-Term Assets'].astype(float)
     data_df['CurrentLiabilities'] = df['balance_sheet.Total Current Liabilities'].astype(float)
     data_df['LongLiabilities'] = df['balance_sheet.Total Long-Term Liabilities'].astype(float)
+    data_df = data_df.drop(index=['TTM'])
     return data_df
 
 

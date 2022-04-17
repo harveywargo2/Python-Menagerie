@@ -1,6 +1,6 @@
 import keys.guruapi
 import GuruWrangler.jupyterdata
-import GuruWrangler.dmd
+import GuruWrangler.dyt
 import os
 
 token = keys.guruapi.token
@@ -11,9 +11,9 @@ desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
 
 os.chdir(desktop)
 
-# GuruWrangler.jupyterdata.to_csv(ticker, token)
-# GuruWrangler.dyt.to_csv(ticker, token)
+GuruWrangler.jupyterdata.to_csv(ticker, token)
+GuruWrangler.dyt.to_csv(ticker, token)
 
-print(GuruWrangler.jupyterdata.to_df(ticker, token))
+
 
 
