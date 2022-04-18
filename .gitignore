@@ -49,9 +49,9 @@ __pycache__/**
 # When using Gradle or Maven with auto-import, you should exclude module files,
 # since they will be recreated, and may cause churn.  Uncomment if using
 # auto-import.
-# .idea/GuruWrangler.xml
+# .idea/gurulegacy.xml
 # .idea/*.iml
-# .idea/GuruWrangler
+# .idea/gurulegacy
 # *.iml
 # *.ipr
 
