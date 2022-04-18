@@ -39,5 +39,5 @@ def to_df(ticker: str, token: str):
 
 def to_csv(ticker: str, token: str):
     dump = to_df(ticker, token)
-    return dump.to_csv(ticker.upper() + '-DytData@' + str(date.today()) + '.csv')
+    return dump.to_csv(ticker.upper() + '-dd.csv')
 
