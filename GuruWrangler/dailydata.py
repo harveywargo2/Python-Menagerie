@@ -26,7 +26,6 @@ def to_df(ticker: str, token: str):
     combined_df['DivPeriod'] = div_frequency
     combined_df['FwdDiv'] = combined_df['DivPay'] * combined_df['DivPeriod']
     combined_df['FwdDivYield'] = combined_df['FwdDiv'] / combined_df['SharePrice']
-    combined_df['Price/Div_Fwd'] = combined_df['SharePrice'] / combined_df['FwdDiv']
 
     current_year = date.today().year
 
@@ -39,5 +38,5 @@ def to_df(ticker: str, token: str):
 
 def to_csv(ticker: str, token: str):
     dump = to_df(ticker, token)
-    return dump.to_csv(ticker.upper() + '-dd.csv')
+    return dump.to_csv(ticker.upper() + '-DailyData@' + str(date.today()) + '.csv')
 

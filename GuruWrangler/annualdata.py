@@ -38,4 +38,4 @@ def to_df(ticker: str, token: str):
 
 def to_csv(ticker: str, token: str):
     data_df = to_df(ticker, token)
-    return data_df.to_csv(ticker.upper() + '-ad.csv')
+    return data_df.to_csv(ticker.upper() + '-AnnualData@' + str(date.today()) + '.csv')
