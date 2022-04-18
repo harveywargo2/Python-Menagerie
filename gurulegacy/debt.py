@@ -1,10 +1,10 @@
 import pandas as pd
-import GuruWrangler.annual
+import gurulegacy.annual
 from datetime import date
 
 
 def to_df(ticker: str, token: str):
-    ann_df = GuruWrangler.annual.to_df(ticker, token)
+    ann_df = gurulegacy.annual.to_df(ticker, token)
     debt_df = pd.DataFrame(index=ann_df.index)
     debt_df['Revenue'] = ann_df['income_statement.Revenue'].astype(float)
     debt_df['FreeCashFlow'] = ann_df['cashflow_statement.Free Cash Flow'].astype(float)

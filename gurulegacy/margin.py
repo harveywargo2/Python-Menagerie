@@ -1,10 +1,10 @@
 import pandas as pd
-import GuruWrangler.annual
+import gurulegacy.annual
 from datetime import date
 
 
 def to_df(ticker: str, token: str):
-    ann_df = GuruWrangler.annual.to_df(ticker, token)
+    ann_df = gurulegacy.annual.to_df(ticker, token)
     margin_df = pd.DataFrame(index=ann_df.index)
     margin_df['Revenue'] = ann_df['income_statement.Revenue'].astype(float)
     margin_df['COGS'] = ann_df['income_statement.Cost of Goods Sold'].astype(float)

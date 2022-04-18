@@ -1,10 +1,10 @@
 import pandas as pd
-import GuruWrangler.annual
+import gurulegacy.annual
 from datetime import date
 
 
 def to_df(ticker: str, token: str):
-    df = GuruWrangler.annual.to_df(ticker, token)
+    df = gurulegacy.annual.to_df(ticker, token)
     data_df = pd.DataFrame(index=df.index)
     data_df['Price_Low'] = df['valuation_and_quality.Lowest Stock Price'].astype(float)
     data_df['Price_High'] = df['valuation_and_quality.Highest Stock Price'].astype(float)
