@@ -35,8 +35,6 @@ ps_df['EPS'] = df_init['per_share_data_array.Earnings per Share (Diluted)'].asty
 ps_df['LP/E'] = ps_df['LowPrice'] / ps_df['EPS']
 ps_df['HP/E'] = ps_df['HighPrice'] / ps_df['EPS']
 
-ps_df = ps_df.drop(index=['TTM'])
-
 
 # Margins
 margin_df['Revenue'] = df_init['income_statement.Revenue'].astype(float)
@@ -47,7 +45,7 @@ margin_df['GPM'] = margin_df['GrossProfit'] / margin_df['Revenue']
 
 margin_df['OperatingProfit'] = df_init['income_statement.Operating Income'].astype(float)
 margin_df['OPEX'] = df_init['income_statement.Total Operating Expense'].astype(float)
-margin_df['OPM'] = margin_df['OperatingProfitProfit'] / margin_df['Revenue']
+margin_df['OPM'] = margin_df['OperatingProfit'] / margin_df['Revenue']
 
 margin_df['NetProfit'] = df_init['income_statement.Net Income'].astype(float)
 margin_df['NetMargin'] = margin_df['NetProfit'] / margin_df['Revenue']
@@ -63,8 +61,6 @@ margin_df['FcfMargin'] = margin_df['FCF'] / margin_df['Revenue']
 
 margin_df['Dividends'] = df_init['cashflow_statement.Cash Flow for Dividends'].astype(float)
 margin_df['Dividends'] = margin_df['Dividends'] / margin_df['Revenue']
-
-margin_df = margin_df.drop(index=['TTM'])
 
 
 # Growth
@@ -82,8 +78,6 @@ grow_df['MVGro'] = ""
 
 grow_df['SharesOutstanding'] = df_init['income_statement.Shares Outstanding (Diluted Average)'].astype(float)
 grow_df['ShareGro'] = ""
-
-grow_df = grow_df.drop(index=['TTM'])
 
 
 # Ownership
@@ -107,8 +101,6 @@ debt_df['LongAssets'] = df_init['balance_sheet.Total Long-Term Assets'].astype(f
 
 debt_df['CurrentLiabilities'] = df_init['balance_sheet.Total Current Liabilities'].astype(float)
 debt_df['LongLiabilities'] = df_init['balance_sheet.Total Long-Term Liabilities'].astype(float)
-
-debt_df = debt_df.drop(index=['TTM'])
 
 
 # Windows
