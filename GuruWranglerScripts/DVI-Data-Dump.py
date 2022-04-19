@@ -1,0 +1,59 @@
+import pandas as pd
+import gurufocus.dataframe
+import keys.guruapi
+from datetime import date
+import os
+
+
+token = keys.guruapi.token
+ticker = input('Enter Stock Ticker: ').upper()
+
+#Get Data from Gurfocus
+annuals = gurufocus.dataframe.annuals(ticker, token)
+dividend = gurufocus.dataframe.dividend(ticker, token)
+price = gurufocus.dataframe.price(ticker, token)
+
+
+# M&M Data Dump to Windows
+
+div_df1 = dividend
+div_df2 = div_df1.loc[div_df1["type"] != 'Special Div.'] #Trim out special dividends
+div_ex_df = div_df2.drop(['record_date', 'pay_date', 'type', 'currency'], axis=1) #drop unused columns
+
+price_df = price
+div_frequency = 4
+
+combined_df = price_df.join(div_ex_df)
+combined_df.rename_axis('Date', axis='columns')
+combined_df.rename(columns={'amount': 'ExDiv'}, inplace=True)
+combined_df['DivPay'] = combined_df['ExDiv']
+
+div_var = 0
+
+for index, row in combined_df.iterrows():
+    if row['DivPay'] > 0:
+        div_var = row['DivPay']
+    else:
+        row['DivPay'] = div_var
+
+combined_df['DivPeriod'] = div_frequency
+combined_df['FwdDiv'] = combined_df['DivPay'] * combined_df['DivPeriod']
+combined_df['FwdDivYield'] = combined_df['FwdDiv'] / combined_df['SharePrice']
+
+current_year = date.today().year
+
+for date_index, row in combined_df.iterrows():
+    if current_year - date_index.year >= 30:
+        combined_df.drop(date_index, inplace=True)
+
+
+DVI_df = combined_df.groupby(combined_df.index.year).agg({'SharePrice': ['max', 'min', 'mean', 'median'], 'FwdDivYield': [ 'min', 'max', 'mean', 'median']})
+
+
+# Windows
+desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
+
+os.chdir(desktop)
+
+DVI_df.to_csv(ticker.upper() + '-DVI@' + str(date.today()) + '.csv')
+
