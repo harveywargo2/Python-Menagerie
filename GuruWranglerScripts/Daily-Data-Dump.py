@@ -49,7 +49,7 @@ for date_index, row in combined_df.iterrows():
         combined_df.drop(date_index, inplace=True)
 
 
-DVI_df = combined_df.groupby(combined_df.index.year).agg({'SharePrice': ['max', 'min', 'mean', 'median'], 'FwdDivYield': [ 'min', 'max', 'mean', 'median']})
+DVI_df = combined_df.groupby(combined_df.index.year).agg({'SharePrice': ['min', 'max', 'mean', 'median'], 'FwdDivYield': [ 'min', 'max', 'mean', 'median']})
 
 
 # Windows
