@@ -41,26 +41,26 @@ margin_df['Revenue'] = df_init['income_statement.Revenue'].astype(float)
 
 margin_df['COGS'] = df_init['income_statement.Cost of Goods Sold'].astype(float)
 margin_df['GrossProfit'] = df_init['income_statement.Gross Profit'].astype(float)
-margin_df['GPM'] = margin_df['GrossProfit'] / margin_df['Revenue']
+margin_df['GPM'] = ""
 
 margin_df['OperatingProfit'] = df_init['income_statement.Operating Income'].astype(float)
 margin_df['OPEX'] = df_init['income_statement.Total Operating Expense'].astype(float)
-margin_df['OPM'] = margin_df['OperatingProfit'] / margin_df['Revenue']
+margin_df['OPM'] = ""
 
 margin_df['NetProfit'] = df_init['income_statement.Net Income'].astype(float)
-margin_df['NetMargin'] = margin_df['NetProfit'] / margin_df['Revenue']
+margin_df['NetMargin'] = ""
 
 margin_df['CashFromOps'] = df_init['cashflow_statement.Cash Flow from Operations'].astype(float)
-margin_df['CfoMargin'] = margin_df['CashFromOps'] / margin_df['Revenue']
+margin_df['CfoMargin'] = ""
 
 margin_df['CAPEX'] = df_init['cashflow_statement.Capital Expenditure'].astype(float)
-margin_df['CapexMargin'] = margin_df['CashFromOps'] / margin_df['Revenue']
+margin_df['CapexMargin'] = ""
 
 margin_df['FCF'] = df_init['cashflow_statement.Free Cash Flow'].astype(float)
-margin_df['FcfMargin'] = margin_df['FCF'] / margin_df['Revenue']
+margin_df['FcfMargin'] = ""
 
 margin_df['Dividends'] = df_init['cashflow_statement.Cash Flow for Dividends'].astype(float)
-margin_df['DivMargin'] = abs(margin_df['Dividends']) / margin_df['Revenue']
+margin_df['DivMargin'] = ""
 
 
 # Growth
