@@ -7,6 +7,7 @@ import os
 
 token = keys.guruapi.token
 ticker = input('Enter Stock Ticker: ').upper()
+PricePoint = input("Enter Price Point: ")
 
 # Get Data from Gurfocus
 annuals = gurufocus.dataframe.annuals(ticker, token)
@@ -48,9 +49,11 @@ for date_index, row in combined_df.iterrows():
     if current_year - date_index.year >= 30:
         combined_df.drop(date_index, inplace=True)
 
+
 # Windows
 desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
 
 os.chdir(desktop)
 
 combined_df.to_csv(ticker.upper() + '-EBOND@' + str(date.today()) + '.csv')
+
