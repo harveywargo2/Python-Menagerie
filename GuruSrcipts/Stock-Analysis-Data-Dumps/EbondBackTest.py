@@ -62,6 +62,7 @@ combined_df['Median'] = median
 combined_df['MOS'] = mos
 combined_df['DMOS'] = dmos
 
+
 combined_df.loc[combined_df['FwdDivYield'] >= median, 'MedianBackTest'] = 'FairBuy'
 combined_df.loc[combined_df['FwdDivYield'] >= mos, 'MOSBackTest'] = 'GoodBuy'
 combined_df.loc[combined_df['FwdDivYield'] >= dmos, 'DMOSBackTest'] = 'GreatBuy'
