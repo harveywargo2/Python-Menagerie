@@ -22,19 +22,15 @@ debt_df = pd.DataFrame(index=df_init.index)
 # Per Share Dataframe
 ps_df['PriceLow'] = df_init['valuation_and_quality.Lowest Stock Price'].astype(float)
 ps_df['PriceHigh'] = df_init['valuation_and_quality.Highest Stock Price'].astype(float)
-
 ps_df['Rev'] = df_init['per_share_data_array.Revenue per Share'].astype(float)
 ps_df['RevLow'] = ps_df['PriceLow'] / ps_df['Rev']
 ps_df['RevHigh'] = ps_df['PriceHigh'] / ps_df['Rev']
-
 ps_df['FCF'] = df_init['per_share_data_array.Free Cash Flow per Share'].astype(float)
 ps_df['FCFLow'] = ps_df['PriceLow'] / ps_df['FCF']
 ps_df['FCFHigh'] = ps_df['PriceHigh'] / ps_df['FCF']
-
 ps_df['EPS'] = df_init['per_share_data_array.Earnings per Share (Diluted)'].astype(float)
 ps_df['EPSLow'] = ps_df['PriceLow'] / ps_df['EPSLow']
 ps_df['EPSHigh'] = ps_df['PriceHigh'] / ps_df['EPSHigh']
-
 ps_df['Div'] = df_init['per_share_data_array.Dividends per Share'].astype(float)
 ps_df['DivLow'] = ps_df['PriceLow'] / ps_df['Div']
 ps_df['DivHigh'] = ps_df['PriceHigh'] / ps_df['Div']
