@@ -72,5 +72,5 @@ combined_df.loc[combined_df['FwdDivYield'] >= dmos, 'DMOSBackTest'] = 'GreatBuy'
 desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
 os.chdir(desktop)
 
-combined_df.to_csv(ticker.upper() + '-EBOND@' + str(date.today()) + '.csv')
+combined_df.to_csv(ticker.upper() + '-DYTD@' + str(date.today()) + '.csv')
 
