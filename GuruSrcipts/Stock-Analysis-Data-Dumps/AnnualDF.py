@@ -11,6 +11,7 @@ ticker = input('Enter Stock Ticker: ').upper()
 # Pull gurufocus data
 df_init = gurufocus.dataframe.annuals(ticker, token)
 
+
 # Assign Dataframes
 margin_df = pd.DataFrame(index=df_init.index)
 ps_df = pd.DataFrame(index=df_init.index)
@@ -54,10 +55,12 @@ margin_df['FCF'] = df_init['cashflow_statement.Free Cash Flow'].astype(float)
 margin_df['FCFMargin'] = margin_df['FCF'] / margin_df['Revenue']
 margin_df['Dividends'] = df_init['cashflow_statement.Cash Flow for Dividends'].astype(float)
 margin_df['DivMargin'] = margin_df['Dividends'] / margin_df['Revenue']
+margin_df['Div/FCF'] = margin_df['Dividends'] / margin_df['FCF']
 
 
 # Growth
 grow_df['Revenue'] = margin_df['Revenue'].astype(float)
+grow_df['FCF'] = df_init['cashflow_statement.Free Cash Flow'].astype(float)
 grow_df['Dividend'] = df_init['cashflow_statement.Cash Flow for Dividends'].astype(float)
 grow_df['MarketValue'] = df_init['valuation_and_quality.Market Cap'].astype(float)
 grow_df['SharesOutstanding'] = df_init['income_statement.Shares Outstanding (Diluted Average)'].astype(float)
@@ -83,6 +86,7 @@ debt_df['CurrentAssets'] = df_init['balance_sheet.Total Current Assets'].astype(
 debt_df['LongAssets'] = df_init['balance_sheet.Total Long-Term Assets'].astype(float)
 debt_df['CurrentLiabilities'] = df_init['balance_sheet.Total Current Liabilities'].astype(float)
 debt_df['LongLiabilities'] = df_init['balance_sheet.Total Long-Term Liabilities'].astype(float)
+debt_df['CurrentRatio'] = debt_df['CurrentAssets'] / debt_df['CurrentLiabilities']
 
 
 # Windows
