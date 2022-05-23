@@ -57,5 +57,5 @@ desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
 
 os.chdir(desktop)
 
-DVI_df.to_csv(ticker.upper() + '-DVI@' + str(date.today()) + '.csv')
+DVI_df.to_csv(ticker.upper() + '-DVTDF@' + str(date.today()) + '.csv')
 
