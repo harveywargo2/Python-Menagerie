@@ -8,7 +8,7 @@ import os
 token = keys.guruapi.token
 ticker = input('Enter Stock Ticker: ').upper()
 medlow = float(input("Enter Median: ")) / 100
-medhigh = float(input("Enter SafetyMedian: ")) / 100
+medhigh = float(input("Enter Safety: ")) / 100
 mos = float(input("Enter MOS: ")) / 100
 
 
