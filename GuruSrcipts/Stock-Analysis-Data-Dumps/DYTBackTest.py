@@ -7,9 +7,9 @@ import os
 
 token = keys.guruapi.token
 ticker = input('Enter Stock Ticker: ').upper()
-median = float(input("Enter Median: ")) / 100
+medlow = float(input("Enter Median: ")) / 100
+medhigh = float(input("Enter SafetyMedian: ")) / 100
 mos = float(input("Enter MOS: ")) / 100
-dmos = float(input("Enter DMOS: ")) / 100
 
 
 # Get Data from Gurfocus
@@ -58,14 +58,14 @@ combined_df['FwdDivYield'] = combined_df['FwdDiv'] / combined_df['SharePrice']
 
 
 # Back Test Columns
-combined_df['Median'] = median
-combined_df['MOS'] = mos
-combined_df['DMOS'] = dmos
+combined_df['Median'] = medlow
+combined_df['MOS'] = medhigh
+combined_df['DMOS'] = mos
 
 
-combined_df.loc[combined_df['FwdDivYield'] >= median, 'MedianBackTest'] = 'FairBuy'
-combined_df.loc[combined_df['FwdDivYield'] >= mos, 'MOSBackTest'] = 'GoodBuy'
-combined_df.loc[combined_df['FwdDivYield'] >= dmos, 'DMOSBackTest'] = 'GreatBuy'
+combined_df.loc[combined_df['FwdDivYield'] >= medlow, 'MarketMedian'] = 'MarketMedian'
+combined_df.loc[combined_df['FwdDivYield'] >= medhigh, 'SafetyMedian'] = 'SafetyMedian'
+combined_df.loc[combined_df['FwdDivYield'] >= mos, 'MOSBackTest'] = 'MOS'
 
 
 # Windows
