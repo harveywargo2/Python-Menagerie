@@ -54,8 +54,8 @@ margin_df['CapexMargin'] = margin_df['CAPEX'] / margin_df['Revenue']
 margin_df['FCF'] = df_init['cashflow_statement.Free Cash Flow'].astype(float)
 margin_df['FCFMargin'] = margin_df['FCF'] / margin_df['Revenue']
 margin_df['Dividends'] = df_init['cashflow_statement.Cash Flow for Dividends'].astype(float)
-margin_df['DivMargin'] = margin_df['Dividends'] / margin_df['Revenue']
-margin_df['Div/FCF'] = margin_df['Dividends'] / margin_df['FCF']
+margin_df['DivMargin'] = abs(margin_df['Dividends'] / margin_df['Revenue'])
+margin_df['Div/FCF'] = abs(margin_df['Dividends'] / margin_df['FCF'])
 
 
 # Growth
