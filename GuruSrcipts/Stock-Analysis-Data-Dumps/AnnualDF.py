@@ -72,7 +72,7 @@ owner_df['FCF'] = df_init['cashflow_statement.Free Cash Flow'].astype(float)
 owner_df['Issues'] = df_init['cashflow_statement.Issuance of Stock'].astype(float)
 owner_df['BuyBack'] = df_init['cashflow_statement.Repurchase of Stock'].astype(float)
 owner_df['Dividend'] = df_init['cashflow_statement.Cash Flow for Dividends'].astype(float)
-owner_df['OwnersDistro'] = owner_df['Issues'] + owner_df['BuyBack'] + owner_df['Dividend']
+owner_df['OwnersDistro'] = abs(owner_df['Issues'] + owner_df['BuyBack'] + owner_df['Dividend'])
 
 
 # Balance Sheet
